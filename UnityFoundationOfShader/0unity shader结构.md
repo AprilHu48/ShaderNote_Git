@@ -9,8 +9,8 @@ Shader "Custom/BaseShader"
 		_Specular ("Specular", Color) = (1, 1, 1, 1)
 		_Gloss ("Gloss", Range(8.0, 256)) = 20
     }
-    SubShader 
-	{//对A显卡
+    SubShader //对A显卡
+	{
 		Pass 
 		{ 
             // 设置渲染状态
