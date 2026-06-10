@@ -3,8 +3,10 @@
 ```
 Shader "Custom/BaseShader"
 {
-    Properties //属性,暴露在材质面板的可调参数,结构为:[变量名 ("显示名称",类型)=初始值],并需要在Pass中定义一个相同名字的变量
+    Properties //属性,暴露在材质面板的可调参数,并需要在Pass中定义一个相同名字的变量
     {
+    	//结构为:变量名 ("显示名称",属性类型)=初始值
+    	//其中变量名与pass中定义对应
         _Diffuse ("Diffuse", Color) = (1, 1, 1, 1)
 		_Specular ("Specular", Color) = (1, 1, 1, 1)
 		_Gloss ("Gloss", Range(8.0, 256)) = 20
@@ -74,7 +76,7 @@ Shader "Custom/BaseShader"
             };
             
             struct v2f {
-                float4 pos : SV_POSITION;//:NORMAL 告诉unity参数normal与模型空间的顶点法线关联
+                float4 pos : SV_POSITION;
                 fixed3 color : COLOR0;
             };
             
@@ -94,4 +96,6 @@ Shader "Custom/BaseShader"
             ENDCG
         }
 ```
+
+可将函数和属性写在pass外部，这样所有pass均可调用，如：13章的边缘检测案例
 
